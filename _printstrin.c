@@ -24,5 +24,6 @@ int _printstrin(va_list argums)
 		compute++;
 	}
 
+	return (compute);
 }
 

@@ -11,6 +11,10 @@
 */
 int _printcharac(va_list argums)
 {
-return (_putcharac(va_arg(argums, int)));
+	char c = va_arg(argums, int);
+
+	_putcharac(c);
+
+	return (1);
 }
 
