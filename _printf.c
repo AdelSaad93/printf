@@ -8,9 +8,8 @@
 */
 int _printf(const char *format, ...)
 {
-		va_list argums;
-		int compute = 0;
-		int number;
+	va_list argums;
+	int compute = 0;
 
 		va_start(argums, format);
 
@@ -24,32 +23,13 @@ int _printf(const char *format, ...)
 				else
 				{
 					format++;
-					switch (*format)
-					{
-						case 'C':
-							compute += _printcharac(argums);
-							break;
-						case 'S':
-							compute += _printstrin(argums);
-							break;
-						case '%':
-						_putcharac('%');
-						compute++;
-							break;
-						case 'd':
-						number = va_arg(argums, int);
-						compute += _printintg(number);
-							break;
-						default:
-						_putcharac('%');
-						_putcharac(*format);
-						compute += 2;
-							break;
-					}
+					compute += _putspecifier(format, argums, &compute);
 				}
+
 				format++;
 			}
-		va_end(argums);
-		return (compute);
+
+			va_end(argums);
+			return (compute);
 }
 
