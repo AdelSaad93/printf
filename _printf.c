@@ -23,31 +23,26 @@ int _printf(const char *format, ...)
 				else
 				{
 					format++;
-					if (*format == 'c')
+					switch (*format)
 					{
-						compute += _printcharac(argums);
-					}
-					else if (*format == 's')
-					{
-						compute += _printstrin(argums);
-					}
-					else if (*format == '%')
-					{
+						case 'C':
+							compute += _printcharac(argums);
+							break;
+						case 'S':
+							compute += _printstrin(argums);
+							break;
+						case '%':
 						_putcharac('%');
 						compute++;
-					}
-					else if (*format == 'd')
-					{
-						int number = va_arg(argums, int);
-
-						compute += _printintg(number);
-					}
-					else
-					{
+							break;
+						case 'd':
+						compute += _printintg(va_arg(argums, int));
+							break;
+						default:
 						_putcharac('%');
 						_putcharac(*format);
 						compute += 2;
-					}
+					}		break;
 				}
 				format++;
 			}
