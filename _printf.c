@@ -35,9 +35,6 @@ int _printf(const char *format, ...)
 							_putcharac('%');
 							compute++;
 							break;
-						case 'd':
-							compute += _printintg(va_arg(argums, int));
-							break;
 						default:
 							_putcharac('%');
 							_putcharac(*format);
