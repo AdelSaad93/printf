@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  * _printf - Function to Handle Format Specificers.
  * @format: String Containing Specifiers.
