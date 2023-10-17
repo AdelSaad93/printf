@@ -10,7 +10,7 @@ int _printf(const char *format, ...)
 {
 		va_list argums;
 		int compute = 0;
-		int number = va_arg(argums, int);
+		int number;
 
 		va_start(argums, format);
 
@@ -37,6 +37,7 @@ int _printf(const char *format, ...)
 						compute++;
 							break;
 						case 'd':
+						number = va_arg(argums, int);
 						compute += _printintg(number);
 							break;
 						default:
