@@ -32,13 +32,16 @@ int _printf(const char *format, ...)
 							compute += _printstrin(argums);
 							break;
 						case '%':
-							_putcharac('%');
-							compute++;
+						_putcharac('%');
+						compute++;
+							break;
+						case 'd':
+						compute += _printintg(va_arg(argums, int));
 							break;
 						default:
-							_putcharac('%');
-							_putcharac(*format);
-							compute += 2;
+						_putcharac('%');
+						_putcharac(*format);
+						compute += 2;
 					}		break;
 				}
 				format++;
