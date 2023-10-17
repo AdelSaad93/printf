@@ -17,5 +17,5 @@ int _printf(const char *format, ...);
 
 int _printfunc(const char *format, ...);
 
-#endif
+#endif /* MAIN_H */
 
