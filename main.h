@@ -15,6 +15,7 @@ int _putspecifier(const char *format, va_list argums, int *compute);
 
 int _printf(const char *format, ...);
 
+int _printfunc(const char *format, ...);
 
 #endif
 
