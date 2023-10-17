@@ -30,6 +30,8 @@ int _printcharac(va_list argums);
 
 int _printstrin(va_list argums);
 
+int _printstr(char *str);
+
 int _printintg(int number);
 
 int _putspecifier(const char *format, va_list argums, int *compute);
