@@ -10,6 +10,8 @@ int _printcharac(va_list argums);
 
 int _printstrin(va_list argums);
 
+int _printintg(int number);
+
 int _printf(const char *format, ...);
 
 
