@@ -12,7 +12,6 @@
 int _putspecifier(const char *format, va_list argums, int *compute)
 {
 	int count = 0;
-	int number;
 
 	switch (*format)
 					{
@@ -25,10 +24,6 @@ int _putspecifier(const char *format, va_list argums, int *compute)
 						case '%':
 						_putcharac('%');
 						count++;
-							break;
-						case 'd':
-						number = va_arg(argums, int);
-						count = _printintg(number);
 							break;
 						default:
 						_putcharac('%');
