@@ -6,38 +6,23 @@
  * _putspecifier - Process format specifiers.
  * @format: The format specifier character.
  * @argums: A va_list of arguments.
+ * @compute: Pointer to the total character count.
  *
  * Return: The number of characters printed for the specifier.
  */
-int _putspecifier(const char *format, va_list argums)
+int _putspecifier(const char *format, va_list argums, int *compute)
 {
 	switch (*format)
 	{
 		case 'c':
-		{
-			char c = va_arg(argums, int);
-
-			putchar(c);
-			return (1);
-		}
+			return (_printcharac(argums, compute));
 		case 's':
-		{
-			char *s = va_arg(argums, char*);
-			int len = 0;
-
-			while (*s)
-			{
-				putchar(*s);
-				s++;
-				len++;
-			}
-			return (len);
-		}
+			return (_putstring(argums, compute));
+		case 'd':
+		case 'i':
+			return (_putintg(argums, compute));
 		case '%':
-		{
-			putchar('%');
-			return (1);
-		}
+			return (_putpercent(compute));
 		default:
 			return (0);
 	}

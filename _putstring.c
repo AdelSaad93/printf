@@ -4,28 +4,29 @@
 #include <stdio.h>
 
 /**
- * _printstrin - Print a String
+ * _putstring - Print a String
  *
  * @argums: List Of Arguments.
+ * @compute: Pointer to the total character count.
  *
  * Return: The Number Of Characters.
  *
 */
-int _printstrin(va_list argums)
+int _putstring(va_list argums, int *compute)
 {
 		char *strin = va_arg(argums, char *);
-		int compute = 0;
+		int leng  = 0;
 
 		if (strin == NULL)
 			strin = "(null)";
 
 		while (*strin)
 		{
-			putchar(*strin);
+			_putcharac(*strin);
 			strin++;
-			compute++;
+			(*compute)++;
 		}
 
-		return (compute);
+		return (leng);
 }
 
