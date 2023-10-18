@@ -42,16 +42,34 @@ int _putspecifier(const char *format, va_list argums, int *compute)
 
 void _printintger(va_list argums, int *compute)
 {
-	int num = va_arg(argums, int);
+	int number = va_arg(argums, int);
 	char str[20];
-	int i;
+	int i = 0;
 
-	sprintf(str, "%d", num);
-	for (i = 0; str[i]; i++)
+
+if (number < 0)
 	{
-		putchar(str[i]);
-		(*compute)++;
+	putchar('-');
+	number = -number;
+
 	}
 
+	if (number == 0)
+	{
+	putchar('0');
+	(*compute)++;
+	return;
+	}
+
+	while (number > 0)
+	{
+		str[i++] = (number % 10) + '0';
+		number /= 10;
+	}
+	while (i > 10)
+	{
+		putchar(str[--i]);
+		(*compute)++;
+	}
 }
 
