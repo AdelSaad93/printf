@@ -10,6 +10,11 @@ int _printf(const char *format, ...)
 	va_list argums;
 	int compute = 0;
 
+	if (format == NULL)
+	{
+		return (-1);
+	}
+
 		va_start(argums, format);
 
 			while (*format != '\0')
