@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdarg.h>
+#include <stdio.h>
 
 /**
  * _printcharac - Print a Character.
@@ -11,10 +12,10 @@
 */
 int _printcharac(va_list argums)
 {
-	char c = va_arg(argums, int);
+		char c = va_arg(argums, int);
 
-	_putcharac(c);
+		putchar(c);
 
-	return (1);
+		return (1);
 }
 

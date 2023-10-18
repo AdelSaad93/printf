@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdarg.h>
+#include <stdio.h>
 
 /**
  * _printintg - Print an integer.
@@ -15,23 +16,23 @@ int _printintg(int number)
 
 	if (number < 0)
 	{
-		_putcharac('-');
-		number = -number;
-	   compute++;
+	putchar('-');
+	number = -number;
+	compute++;
 	}
 
 	if (number == 0)
 	{
-		_putcharac('0');
-		return (1);
+	putchar('0');
+	return (1);
 	}
 
 	if (number / 10)
 	{
-		compute += _printintg(number / 10);
+	compute += _printintg(number / 10);
 	}
 
-	_putcharac(number % 10 + '0');
+	putchar(number % 10 + '0');
 	compute++;
 
 	return (compute);

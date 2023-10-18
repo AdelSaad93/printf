@@ -1,9 +1,10 @@
 #include "main.h"
 #include <stdarg.h>
+#include <stdio.h>
 
 /**
- * _printstr - Prints a string to stdout.
- * @str: The string to print.
+ * _printstr - Print a null-terminated string.
+ * @str: The string to be printed.
  *
  * Return: The number of characters printed.
  */
@@ -13,9 +14,10 @@ int _printstr(char *str)
 
 	while (*str)
 	{
-		_putcharac(*str);
+		putchar(*str);
 		str++;
 		count++;
 	}
 	return (count);
 }
+

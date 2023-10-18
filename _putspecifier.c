@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdarg.h>
+#include <stdio.h>
 
 /**
  * _putspecifier - Process format specifiers.
@@ -23,7 +24,7 @@ int _putspecifier(const char *format, va_list argums, int *compute)
 							count = _printstrin(argums);
 							break;
 						case '%':
-						_putcharac('%');
+						putchar('%');
 						count++;
 							break;
 						case 'd':
@@ -32,8 +33,8 @@ int _putspecifier(const char *format, va_list argums, int *compute)
 						count = _printintg(number);
 							break;
 						default:
-						_putcharac('%');
-						_putcharac(*format);
+						putchar('%');
+						putchar(*format);
 						count = 2;
 							break;
 					}

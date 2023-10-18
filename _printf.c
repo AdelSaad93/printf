@@ -1,4 +1,8 @@
 #include "main.h"
+#include <stdarg.h>
+#include <unistd.h>
+#include <stdio.h>
+
 /**
  * _printf - Function to Handle Format Specificers.
  * @format: String Containing Specifiers.
@@ -15,7 +19,7 @@ int _printf(const char *format, ...)
 			{
 				if (*format != '%')
 				{
-					_putcharac(*format);
+					putchar(*format);
 					compute++;
 				}
 				else

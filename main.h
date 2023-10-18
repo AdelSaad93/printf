@@ -24,7 +24,6 @@ int _printf(const char *format, ...);
 #include <stdarg.h>
 #include <stdio.h>
 
-int _putcharac(char c);
 
 int _printcharac(va_list argums);
 
