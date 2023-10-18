@@ -33,7 +33,7 @@ int _printf(const char *format, ...)
 				}
 				else
 				{
-					_putcharac(*format);
+					putchar(*format);
 					compute++;
 				}
 				format++;
@@ -55,7 +55,7 @@ int _printcharac(va_list argums, int *compute)
 {
 		char c = va_arg(argums, int);
 
-		_putcharac(c);
+		putchar(c);
 
 		(*compute)++;
 
@@ -80,7 +80,7 @@ int _putstring(va_list argums, int *compute)
 			strin = "(null)";
 		while (*strin)
 		{
-			_putcharac(*strin);
+			putchar(*strin);
 			strin++;
 			(*compute)++;
 		}
@@ -96,7 +96,7 @@ int _putstring(va_list argums, int *compute)
 
 int _putpercent(int *compute)
 {
-	_putcharac('%');
+	putchar('%');
 	(*compute)++;
 
 	return (1);
