@@ -83,6 +83,7 @@ int _putstring(va_list argums, int *compute)
 		{
 			putchar(*strin);
 			strin++;
+			leng++;
 			(*compute)++;
 		}
 		return (leng);
