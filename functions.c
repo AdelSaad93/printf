@@ -54,6 +54,7 @@ int _putintg(va_list argums, int *compute)
 	(*compute) += len;
 	return (len);
 }
+
 /**
  * _int_to_string - Convert an integer to a string.
  * @num: The integer to convert.
@@ -75,6 +76,7 @@ char *_int_to_string(int num)
 
 	return (str);
 }
+
 /**
  * _printstr - Print a null-terminated string.
  * @str: The string to be printed.
@@ -93,6 +95,7 @@ int _printstr(char *str)
 	}
 	return (count);
 }
+
 /**
  * _printintg - Print an integer.
  *
