@@ -12,36 +12,38 @@
  */
 int _putspecifier(const char *format, va_list argums, int *compute)
 {
-	int count = 0;
-	int number;
-
 	switch (*format)
-					{
-						case 'C':
-							count = _printcharac(argums);
-							break;
-						case 'S':
-							count = _printstrin(argums);
-							break;
-						case '%':
-						putchar('%');
-						count++;
-							break;
-						case 'd':
-						case 'i':
-						number = va_arg(argums, int);
-						count = _printintg(number);
-							break;
-						default:
-						putchar('%');
-						putchar(*format);
-						count = 2;
-							break;
-					}
+	{
+		case 'c':
+		{
+			char c = va_arg(argums, int);
 
-					*compute += count;
+			putchar(c);
+			(*compute)++;
+			return (1);
+		}
+		case 's':
+		{
+			char *s = va_arg(argums, char*);
+			int len = 0;
 
-					return (count);
-
+			while (*s)
+			{
+				putchar(*s);
+				s++;
+				len++;
+				(*compute)++;
+			}
+			return (len);
+		}
+		case '%':
+		{
+			putchar('%');
+			(*compute)++;
+			return (1);
+		}
+		default:
+			return (0);
+	}
 }
 
