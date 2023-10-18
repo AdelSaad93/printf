@@ -22,7 +22,7 @@ int _printf(const char *format, ...)
 				else
 				{
 					format++;
-					compute += _putspecifier(format, argums, &compute);
+					compute += _putspecifier(format, argums);
 				}
 
 				format++;
