@@ -19,7 +19,7 @@ int _printf(const char *format, ...)
 
 		va_end(argums);
 
-				return (compute);
+		return (compute);
 }
 
 /**
@@ -46,6 +46,10 @@ int _processformat(const char *format, va_list argums)
 		{
 			_putcharac(*format);
 			compute++;
+		}
+		if (*format == '%' && escape)
+		{
+			escape = 0;
 		}
 		format++;
 	}
