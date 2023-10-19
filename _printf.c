@@ -77,8 +77,11 @@ int _handlespecifier(const char *format, va_list argums)
 		default:
 			_putcharac('%');
 			compute++;
-			_putcharac(*format);
-			compute++;
+			if (*format != '\0')
+			{
+				_putcharac(*format);
+				compute++;
+			}
 			break;
 	}
 	return (compute);
