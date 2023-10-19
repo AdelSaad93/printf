@@ -59,7 +59,7 @@ int _putpercent(void)
 {
 	_putcharac('%');
 
-	return (0);
+	return (1);
 }
 /**
  * _putcharac - Writes a Character.
