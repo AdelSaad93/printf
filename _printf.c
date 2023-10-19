@@ -65,33 +65,27 @@ int _handlespecifier(const char *format, va_list argums)
 
 	if (*format == '%')
 	{
+		compute += _putpercent();
+	}
+	else if (*format == 'c')
+	{
+		compute += _printcharac(argums);
+	}
+	else if (*format == 's')
+	{
+		compute += _putstring(argums);
+	}
+	else
+	{
 		_putcharac('%');
 		compute++;
-		return (compute);
+		if (*format != '\0')
+		{
+			_putcharac(*format);
+			compute++;
+		}
 	}
 
-	switch (*format)
-	{
-		case 'c':
-			compute += _printcharac(argums);
-			break;
-		case 's':
-			compute += _putstring(argums);
-			break;
-		case '%':
-			_putpercent();
-			compute++;
-			break;
-		default:
-			_putcharac('%');
-			compute++;
-			if (*format != '\0')
-			{
-				_putcharac(*format);
-				compute++;
-			}
-			break;
-	}
 	return (compute);
 }
 
