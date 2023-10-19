@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  * _printf - Function to Handle Format Specificers.
  * @format: String Containing Specifiers.
@@ -14,7 +13,6 @@ int _printf(const char *format, ...)
 	{
 		return (-1);
 	}
-
 		va_start(argums, format);
 
 			while (*format != '\0')
@@ -22,7 +20,6 @@ int _printf(const char *format, ...)
 				if (*format == '%')
 				{
 					format++;
-
 					switch (*format)
 					{
 					case 'c':
