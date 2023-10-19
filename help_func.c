@@ -12,9 +12,16 @@ int _printcharac(va_list argums)
 {
 	char c = va_arg(argums, int);
 
-	return (_putcharac(c));
+	if (c == '\0')
+	{
+		_putcharac('\0');
+		return (1);
+	}
+	else
+	{
+		return (_putcharac(c));
+	}
 }
-
 
 /**
  * _putstring - Print a String
