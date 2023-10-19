@@ -63,8 +63,7 @@ int _printcharac(va_list argums)
 {
 		char c = va_arg(argums, int);
 
-		_putcharac(c);
-		return (1);
+		return (_putcharac(c));
 }
 
 /**
