@@ -33,18 +33,23 @@ int _printf(const char *format, ...)
 int _processformat(const char *format, va_list argums)
 {
 	int compute = 0;
+	int escape = 0;
 
 	while (*format != '\0')
 	{
-		if (*format == '%')
+		if (*format == '%' && !escape)
 		{
 			format++;
-			compute += _handlespecifier(format, argums);
+			compute += _handlespecifier(format, argums, &escape);
 		}
 		else
 		{
 			_putcharac(*format);
 			compute++;
+		}
+		if (*format == '%' && escape)
+		{
+			escape = 0;
 		}
 		format++;
 	}
@@ -60,10 +65,17 @@ int _processformat(const char *format, va_list argums)
  * @escape: A pointer to an integer
  * Return: The number of characters processed and outputted for this specifier.
  */
-int _handlespecifier(const char *format, va_list argums)
+int _handlespecifier(const char *format, va_list argums, int *escape)
 {
 	int compute = 0;
 
+	if (*format == '%' && !*escape)
+	{
+		_putcharac('%');
+		compute++;
+	}
+		else
+	{
 		switch (*format)
 		{
 			case 'c':
@@ -86,6 +98,9 @@ int _handlespecifier(const char *format, va_list argums)
 				}
 				break;
 		}
+	}
+
+	*escape = 0;
 
 	return (compute);
 }
