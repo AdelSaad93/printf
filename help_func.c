@@ -52,7 +52,8 @@ int _putstring(va_list argums)
 
 int _putpercent(void)
 {
-	return (_putcharac('%'));
+	_putcharac('%');
+	return (1);
 }
 /**
  * _putcharac - Writes a Character.
@@ -87,3 +88,4 @@ int _puts(const char *str)
 
 	return (compute);
 }
+
