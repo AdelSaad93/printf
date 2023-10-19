@@ -50,6 +50,7 @@ int _processformat(const char *format, va_list argums)
 	return (compute);
 }
 
+#include "main.h"
 /**
  * _handlespecifier - Handles a format specifier.
  *
@@ -78,7 +79,8 @@ int _handlespecifier(const char *format, va_list argums)
 			compute += _putstring(argums);
 			break;
 		case '%':
-			compute += _putpercent();
+			_putpercent();
+			compute++;
 			break;
 		default:
 			_putcharac('%');
