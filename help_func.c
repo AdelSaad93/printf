@@ -33,21 +33,16 @@ int _printcharac(va_list argums)
 */
 int _putstring(va_list argums)
 {
-				char *strin = va_arg(argums, char *);
-				int leng  = 0;
+				char *str = va_arg(argums, char *);
 
-				if (strin == NULL)
+				if (str == NULL)
 				{
-					strin = "(null)";
+					return  (_puts("(null)"));
 				}
-				while (*strin)
+				else
 				{
-					_putcharac(*strin);
-					strin++;
-					leng++;
+					return (_puts(str));
 				}
-
-				return (leng);
 }
 /**
  * _putpercent - Print a percent character '%'.
@@ -74,3 +69,23 @@ int _putcharac(char c)
 	return (write(1, &c, 1));
 }
 
+/**
+ * _puts - Print a string to the standard output.
+ *
+ * @str: The string to be printed.
+ *
+ * Return: The number of characters printed.
+ */
+int _puts(const char *str)
+{
+	int compute = 0;
+
+	while (str && *str)
+	{
+		_putcharac(*str);
+		compute++;
+		str++;
+	}
+
+	return (compute);
+}
