@@ -66,7 +66,7 @@ int _handlespecifier(const char *format, va_list argums)
 	switch (*format)
 	{
 		case 'c':
-			compute += _printcharac(argums);
+			compute += _printcharac(argums, &compute);
 			break;
 		case 's':
 			compute += _putstring(argums);

@@ -4,15 +4,19 @@
  * _printcharac - Print a Character.
  *
  * @argums: List Of Arguments.
+ * @compute: Pointer to the variable.
  *
  * Return: The Number Of Characters.
  *
 */
-int _printcharac(va_list argums)
+int _printcharac(va_list argums, int *compute)
 {
-				char c = va_arg(argums, int);
+				char c = (char)va_arg(argums, int);
 
-				return (_putcharac(c));
+				_putcharac(c);
+				(*compute)++;
+
+				return (1);
 }
 
 /**
