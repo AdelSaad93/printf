@@ -22,11 +22,6 @@ int _printf(const char *format, ...)
 				if (*format == '%')
 				{
 					format++;
-					if (*format == '!')
-					{
-						putchar('!');
-						compute++;
-					}
 
 					switch (*format)
 					{
@@ -40,10 +35,6 @@ int _printf(const char *format, ...)
 						_putpercent(&compute);
 						break;
 					default:
-						putchar('%');
-						compute++;
-						putchar(*format);
-						compute++;
 						break;
 					}
 				}
