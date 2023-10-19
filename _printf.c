@@ -65,7 +65,8 @@ int _handlespecifier(const char *format, va_list argums)
 
 	if (*format == '%')
 	{
-		compute += _putpercent();
+		_putpercent();
+		compute++;
 	}
 	else if (*format == 'c')
 	{
