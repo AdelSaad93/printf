@@ -11,11 +11,14 @@
 */
 int _printcharac(va_list argums, int *compute)
 {
-				char c = (char)va_arg(argums, int);
+				char c = va_arg(argums, int);
 
-				_putcharac(c);
-				(*compute)++;
+				if (c != '\0')
+				{
+					_putcharac(c);
+					(*compute)++;
 
+				}
 				return (1);
 }
 
