@@ -18,7 +18,7 @@ int _puts(const char *str);
 
 int _processformat(const char *format, va_list argums);
 
-int _handlespecifier(const char *format, va_list argums, int *escape);
+int _handlespecifier(const char *format, va_list argums);
 
 int _printf(const char *format, ...);
 
