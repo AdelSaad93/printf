@@ -6,110 +6,81 @@
 */
 int _printf(const char *format, ...)
 {
-	va_list argums;
-	int compute = 0;
+		va_list argums;
+		int compute = 0;
 
-	if (format == NULL)
-	{
-		return (-1);
-	}
+		if (format == NULL)
+		{
+			return (-1);
+		}
 		va_start(argums, format);
 
-			while (*format != '\0')
-			{
-				if (*format == '%')
-				{
-					format++;
-					switch (*format)
-					{
-					case 'c':
-						compute += _printcharac(argums);
-						break;
-					case 's':
-						compute += _putstring(argums);
-						break;
-					case '%':
-						compute += _putpercent();
-						break;
-					default:
-						_putcharac(*format);
-						compute++;
-						break;
-					}
-				}
-				else
-				{
-					_putcharac(*format);
-					compute++;
-				}
-				format++;
-			}
+		compute = _processformat(format, argums);
+
 		va_end(argums);
-			return (compute);
+
+				return (compute);
 }
 
 /**
- * _printcharac - Print a Character.
+ * _processformat - Processes the format string and handles format specifiers.
  *
- * @argums: List Of Arguments.
+ * @format:  A pointer to the format string.
+ * @argums: A va_list containing the variable arguments.
  *
- * Return: The Number Of Characters.
- *
-*/
-int _printcharac(va_list argums)
-{
-		char c = va_arg(argums, int);
-
-		return (_putcharac(c));
-}
-
-/**
- * _putstring - Print a String
- *
- * @argums: List Of Arguments.
- *
- * Return: The Number Of Characters.
- *
-*/
-int _putstring(va_list argums)
-{
-		char *strin = va_arg(argums, char *);
-		int leng  = 0;
-
-		if (strin == NULL)
-		{
-			strin = "(null)";
-		}
-		while (*strin)
-		{
-			_putcharac(*strin);
-			strin++;
-			leng++;
-		}
-
-		return (leng);
-}
-/**
- * _putpercent - Print a percent character '%'.
- *
- * Return: The number of characters printed.
+ * Return: The total number of characters processed and outputted.
  */
+int _processformat(const char *format, va_list argums)
+{
+	int compute = 0;
 
-int _putpercent(void)
-{
-	_putcharac('%');
-	return (1);
+	while (*format != '\0')
+	{
+		if (*format == '%')
+		{
+			format++;
+			compute += _handlespecifier(format, argums);
+		}
+		else
+		{
+			compute += _putcharac(*format);
+		}
+		format++;
+	}
+	return (compute);
 }
+
+
 /**
- * _putcharac - Writes a Character.
+ * _handlespecifier - Handles a format specifier.
  *
- * @c: The Character To Be written.
+ * @format: A pointer to the format specifier in the format string.
+ * @argums: A va_list containing the variable arguments.
  *
- * Return: The Numbers Of The Characters.
- *
-*/
-int _putcharac(char c)
+ * Return: The number of characters processed and outputted for this specifier.
+ */
+int _handlespecifier(const char *format, va_list argums)
 {
-	return (write(1, &c, 1));
+	int compute = 0;
+
+	switch (*format)
+	{
+		case 'c':
+			compute += _printcharac(argums);
+			break;
+		case 's':
+			compute += _putstring(argums);
+			break;
+		case '%':
+			compute += _putpercent();
+			break;
+		default:
+			_putcharac('%');
+			compute++;
+			_putcharac(*format);
+			compute++;
+			break;
+	}
+	return (compute);
 }
 
