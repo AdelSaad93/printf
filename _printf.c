@@ -50,7 +50,6 @@ int _processformat(const char *format, va_list argums)
 	return (compute);
 }
 
-
 /**
  * _handlespecifier - Handles a format specifier.
  *
@@ -62,6 +61,13 @@ int _processformat(const char *format, va_list argums)
 int _handlespecifier(const char *format, va_list argums)
 {
 	int compute = 0;
+
+	if (*format == '%')
+	{
+		_putcharac('%');
+		compute++;
+		return (compute);
+	}
 
 	switch (*format)
 	{
