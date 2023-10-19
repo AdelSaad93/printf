@@ -71,10 +71,9 @@ int _handlespecifier(const char *format, va_list argums, int *escape)
 
 	if (*format == '%' && !*escape)
 	{
-		_putcharac('%');
-		compute++;
+
 	}
-		else
+	else
 	{
 		switch (*format)
 		{
