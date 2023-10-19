@@ -26,21 +26,23 @@ int _printf(const char *format, ...)
 					switch (*format)
 					{
 					case 'c':
-						_printcharac(argums, &compute);
+						compute += _printcharac(argums);
 						break;
 					case 's':
-						_putstring(argums, &compute);
+						compute += _putstring(argums);
 						break;
 					case '%':
-						_putpercent(&compute);
+						compute += _putpercent();
 						break;
 					default:
+						_putcharac(*format);
+						compute++;
 						break;
 					}
 				}
 				else
 				{
-					putchar(*format);
+					_putcharac(*format);
 					compute++;
 				}
 				format++;
@@ -53,19 +55,15 @@ int _printf(const char *format, ...)
  * _printcharac - Print a Character.
  *
  * @argums: List Of Arguments.
- * @compute: Pointer to the total character count.
  *
  * Return: The Number Of Characters.
  *
 */
-int _printcharac(va_list argums, int *compute)
+int _printcharac(va_list argums)
 {
-		char c = (char)va_arg(argums, int);
+		char c = va_arg(argums, int);
 
-		putchar(c);
-
-		(*compute)++;
-
+		_putcharac(c);
 		return (1);
 }
 
@@ -73,40 +71,49 @@ int _printcharac(va_list argums, int *compute)
  * _putstring - Print a String
  *
  * @argums: List Of Arguments.
- * @compute: Pointer to the total character count.
  *
  * Return: The Number Of Characters.
  *
 */
-int _putstring(va_list argums, int *compute)
+int _putstring(va_list argums)
 {
 		char *strin = va_arg(argums, char *);
 		int leng  = 0;
 
 		if (strin == NULL)
+		{
 			strin = "(null)";
+		}
 		while (*strin)
 		{
-			putchar(*strin);
+			_putcharac(*strin);
 			strin++;
 			leng++;
-			(*compute)++;
 		}
+
 		return (leng);
 }
-
 /**
  * _putpercent - Print a percent character '%'.
- * @compute: Pointer to the total character count.
  *
  * Return: The number of characters printed.
  */
 
-int _putpercent(int *compute)
+int _putpercent(void)
 {
-	putchar('%');
-	(*compute)++;
-
+	_putcharac('%');
 	return (1);
+}
+/**
+ * _putcharac - Writes a Character.
+ *
+ * @c: The Character To Be written.
+ *
+ * Return: The Numbers Of The Characters.
+ *
+*/
+int _putcharac(char c)
+{
+	return (write(1, &c, 1));
 }
 
