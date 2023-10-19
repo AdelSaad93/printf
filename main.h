@@ -12,23 +12,15 @@ int _printcharac(va_list argums);
 
 int _putstring(va_list argums);
 
-int _printintg(int number);
-
 int _putpercent(void);
 
 int _puts(const char *str);
 
 int _processformat(const char *format, va_list argums);
 
-int _handlespecifier(const char *format, va_list argums);
+int _handlespecifier(const char *format, va_list argums, int *escape);
 
 int _printf(const char *format, ...);
-
-void _printintger(va_list argums, int *compute);
-
-char *_int_to_string(int num);
-
-int _putspecifier(const char *format, va_list argums, int *compute);
 
 
 #endif

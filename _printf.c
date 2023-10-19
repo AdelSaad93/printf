@@ -33,17 +33,19 @@ int _printf(const char *format, ...)
 int _processformat(const char *format, va_list argums)
 {
 	int compute = 0;
+	int escape = 0;
 
 	while (*format != '\0')
 	{
-		if (*format == '%')
+		if (*format == '%' && !escape)
 		{
 			format++;
-			compute += _handlespecifier(format, argums);
+			compute += _handlespecifier(format, argums, &escape);
 		}
 		else
 		{
-			compute += _putcharac(*format);
+			_putcharac(*format);
+			compute++;
 		}
 		format++;
 	}
@@ -56,36 +58,45 @@ int _processformat(const char *format, va_list argums)
  *
  * @format: A pointer to the format specifier in the format string.
  * @argums: A va_list containing the variable arguments.
- *
+ * @escape: A pointer to an integer
  * Return: The number of characters processed and outputted for this specifier.
  */
-int _handlespecifier(const char *format, va_list argums)
+int _handlespecifier(const char *format, va_list argums, int *escape)
 {
 	int compute = 0;
 
-	if (*format == '%')
-	{
-		_putpercent();
-		compute++;
-	}
-	else if (*format == 'c')
-	{
-		compute += _printcharac(argums);
-	}
-	else if (*format == 's')
-	{
-		compute += _putstring(argums);
-	}
-	else
+	if (*format == '%' && !*escape)
 	{
 		_putcharac('%');
 		compute++;
-		if (*format != '\0')
+	}
+		else
+	{
+		switch (*format)
 		{
-			_putcharac(*format);
-			compute++;
+			case 'c':
+				compute += _printcharac(argums);
+				break;
+			case 's':
+				compute += _putstring(argums);
+				break;
+			case '%':
+				_putpercent();
+				compute++;
+				break;
+			default:
+				_putcharac('%');
+				compute++;
+				if (*format != '\0')
+				{
+					_putcharac(*format);
+					compute++;
+				}
+				break;
 		}
 	}
+
+	*escape = 0;
 
 	return (compute);
 }
