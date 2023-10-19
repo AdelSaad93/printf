@@ -8,7 +8,7 @@
 
 int _putcharac(char c);
 
-int _printcharac(va_list argums, int *compute);
+int _printcharac(va_list argums);
 
 int _putstring(va_list argums);
 
