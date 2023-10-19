@@ -52,9 +52,7 @@ int _putstring(va_list argums)
 
 int _putpercent(void)
 {
-	putchar('%');
-
-	return (1);
+	return (_putcharac('%'));
 }
 /**
  * _putcharac - Writes a Character.
