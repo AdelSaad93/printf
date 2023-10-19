@@ -22,6 +22,12 @@ int _printf(const char *format, ...)
 				if (*format == '%')
 				{
 					format++;
+					if (*format == '!')
+					{
+						putchar('!');
+						compute++;
+					}
+
 					switch (*format)
 					{
 					case 'c':
@@ -34,6 +40,10 @@ int _printf(const char *format, ...)
 						_putpercent(&compute);
 						break;
 					default:
+						putchar('%');
+						compute++;
+						putchar(*format);
+						compute++;
 						break;
 					}
 				}
@@ -59,7 +69,7 @@ int _printf(const char *format, ...)
 */
 int _printcharac(va_list argums, int *compute)
 {
-		char c = va_arg(argums, int);
+		char c = (char)va_arg(argums, int);
 
 		putchar(c);
 
