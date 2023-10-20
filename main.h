@@ -5,6 +5,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
+#include <limits.h>
 
 int _putcharac(char c);
 
@@ -24,7 +26,9 @@ int _handlespecifier(const char *format, va_list argums, int *escape);
 
 int _printf(const char *format, ...);
 
-char *_int_to_string(int num);
+char *_int_to_string(int number);
+
+char *convert_to_string(unsigned int number);
 
 
 
