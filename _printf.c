@@ -84,10 +84,6 @@ int _handlespecifier(const char *format, va_list argums, int *escape)
 			case 's':
 				compute += _putstring(argums);
 				break;
-			case 'd':
-			case 'i':
-				compute += _printintg(argums);
-				break;
 			case '%':
 				_putpercent();
 				compute++;
