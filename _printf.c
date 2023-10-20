@@ -71,7 +71,7 @@ int _handlespecifier(const char *format, va_list argums, int *escape)
 
 	if (*format == '%' && !*escape)
 	{
-		_putpercent();
+		_putcharac('%');
 		compute++;
 	}
 	else
@@ -83,6 +83,10 @@ int _handlespecifier(const char *format, va_list argums, int *escape)
 				break;
 			case 's':
 				compute += _putstring(argums);
+				break;
+			case 'd':
+			case 'i':
+				compute += _printintg(argums);
 				break;
 			case '%':
 				_putpercent();
@@ -104,4 +108,3 @@ int _handlespecifier(const char *format, va_list argums, int *escape)
 
 	return (compute);
 }
-
